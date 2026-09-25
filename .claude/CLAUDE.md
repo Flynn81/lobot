@@ -79,3 +79,24 @@ Use the memory-management skill when asked to organize, update, reconcile, or su
 
 Do not take irreversible or externally consequential actions merely because they seem useful. Explain the proposed action and obtain the level of user approval appropriate to the tool or environment.
 Never expose credentials, secrets, private tokens, or sensitive local data in outputs.
+
+# Durable Memory: Obsidian
+
+Use the Obsidian vault as the durable, human-auditable memory layer. The vault path is supplied at launch with `claude --add-dir <vault-path>` (or otherwise authorized by the user).
+
+## Memory policy
+- Before answering a question that may depend on prior projects, decisions, people, research, meetings, preferences, or commitments, search the vault for relevant context.
+- Retrieve narrowly: do not load the whole vault into context.
+- Treat user-authored notes and explicit user decisions as higher authority than assistant inference.
+- Distinguish facts, research findings, decisions, hypotheses, and assistant inferences.
+- Preserve provenance and dates. Never silently replace contradictory information; record the conflict and ask when it matters.
+- Do not store whole conversations. Extract only durable, reusable knowledge.
+- Before creating a note, search for an existing canonical note and update/link it when appropriate.
+- Prefer atomic notes with Obsidian `[[wikilinks]]`.
+- Never store passwords, API keys, authentication secrets, or similarly sensitive credentials.
+- By default, propose durable memories before writing them unless the user has explicitly authorized automatic memory writes.
+
+## Vault schema
+Use these top-level folders when present: `00 System`, `10 People`, `20 Organizations`, `30 Projects`, `40 Topics`, `50 Decisions`, `60 Research`, `70 Meetings`, `80 Daily`, and `90 Inbox`.
+
+Delegate nontrivial retrieval, consolidation, contradiction checking, and durable-memory writes to the `memory-manager` agent. Use `/remember`, `/recall`, and `/memory-review` for explicit memory workflows.

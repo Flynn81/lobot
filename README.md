@@ -116,3 +116,18 @@ Once the core setup works well, consider adding:
 ## Compatibility note
 
 This kit was authored against Claude Code documentation current as of August 2026. Claude Code evolves quickly, so re-check frontmatter fields and tool names if you are using a substantially older or newer version.
+
+## V2: Obsidian durable memory
+
+This revision adds an Obsidian-backed, human-auditable long-term memory layer.
+
+### New components
+
+- `.claude/agents/memory-manager.md` — dedicated retrieval/consolidation agent.
+- `/remember` — extracts durable knowledge and, by default, asks before writing.
+- `/recall` — retrieves narrowly from the vault in an isolated memory-manager context.
+- `/memory-review` — audits duplicates, contradictions, staleness, orphans, unresolved decisions, and inbox items.
+- `Obsidian-Vault/` — starter folder schema plus templates for projects, decisions, research, people, organizations, topics, and meetings.
+- `OBSIDIAN-SETUP.md` — installation and operating instructions.
+
+The default is deliberately conservative: memory writes are approval-gated, contradictions are preserved rather than silently overwritten, and secrets/credentials are excluded from durable memory.
